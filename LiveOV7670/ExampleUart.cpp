@@ -7,7 +7,7 @@
 #if EXAMPLE == 3
 #include "Arduino.h"
 #include "CameraOV7670.h"
-
+//#include "Base64.h"
 
 // select resolution and communication speed:
 //  1 - 115200bps 160x120 rgb
@@ -252,7 +252,7 @@ const uint8_t uartPixelFormat = UART_PIXEL_FORMAT_GRAYSCALE;
 CameraOV7670 camera(CameraOV7670::RESOLUTION_VGA_640x480, CameraOV7670::PIXEL_YUV422, 19);
 #endif
 
-
+uint16_t lineBufferLength = 0;
 uint8_t lineBuffer [lineBufferLength]; // Two bytes per pixel
 uint8_t * lineBufferSendByte;
 bool isLineBufferSendHighByte;
@@ -326,7 +326,8 @@ void processFrame() {
   interrupts();
   frameCounter++;
   commandDebugPrint("Frame " + String(frameCounter)/* + " " + String(processedByteCountDuringCameraRead)*/);
-  //commandDebugPrint("Frame " + String(frameCounter, 16)); // send number in hexadecimal
+  //base64Frame = base64::encode(lineBuffer, lineBufferLength);
+  Serial.println(base64Frame);
 }
 
 
