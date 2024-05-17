@@ -16,7 +16,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
+    <script src="https://unpkg,com/vue"></script>
     <!-- Link para indicar al html que archivos de estilos deberá utilizar -->
     <link rel="stylesheet" href="{{ url_for('static', filename="css/styles.css") }}" />
 
@@ -38,7 +38,7 @@
             </div>
             <div class="card-body p-0">
               <div class="d-flex flex-column align-items-center">
-                <button type="button" class="btn btn-primary btn-menu">
+                <button @click="pedirImagen" type="button" class="btn btn-primary btn-menu">
                   <span class="material-symbols-outlined me-2">
                     subdirectory_arrow_left
                   </span>
@@ -106,5 +106,6 @@
         </div>
       </div>
     </div>
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
   </body>
 </html>
